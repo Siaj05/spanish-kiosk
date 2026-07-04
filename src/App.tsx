@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { X, Globe2, Lightbulb, ImageOff } from "lucide-react";
 
 import img_gavi from "./assets/gavi.webp";
@@ -138,26 +138,6 @@ const IMAGES = {
 };
 
 
-const preloadAllImages = () => {
-  const sources = Object.values(IMAGES);
-  let index = 0;
-
-  const loadBatch = () => {
-    const batchEnd = Math.min(index + 6, sources.length);
-    while (index < batchEnd) {
-      const image = new Image();
-      image.decoding = "async";
-      image.src = sources[index];
-      index += 1;
-    }
-
-    if (index < sources.length) {
-      window.setTimeout(loadBatch, 120);
-    }
-  };
-
-  window.setTimeout(loadBatch, 250);
-};
 
 /* ---------------- Flags ---------------- */
 function Star({ cx, cy, r = 1.6, fill = "#fff", points = 5 }) {
@@ -628,7 +608,7 @@ function PhotoCard({ title, caption, img, isFlag, flagKey }) {
         {isFlag ? (
           <div className="flag-wrap"><Flag k={flagKey} /></div>
         ) : img ? (
-          <img src={img} alt={title} />
+          <img src={img} alt={title} loading="lazy" decoding="async" />
         ) : (
           <div className="placeholder">
             <ImageOff size={22} strokeWidth={1.6} />
@@ -694,9 +674,6 @@ function Panel({ country, onClose }) {
 
 /* ---------------- App ---------------- */
 export default function App() {
-  useEffect(() => {
-    preloadAllImages();
-  }, []);
 
   const [selected, setSelected] = useState(null);
   const [hovered, setHovered] = useState(null);
