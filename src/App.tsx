@@ -1,72 +1,72 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { X, Globe2, Lightbulb, ImageOff } from "lucide-react";
 
-import img_gavi from "./assets/gavi.jpg";
-import img_mariachi from "./assets/mariachi.jpg";
-import img_ricebeans from "./assets/ricebeans.jpg";
-import img_baseball from "./assets/baseball.jpg";
-import img_beach from "./assets/beach.jpg";
-import img_bukele from "./assets/bukele.jpg";
-import img_volcano from "./assets/volcano.jpg";
-import img_hangingbridge from "./assets/hangingbridge.jpg";
-import img_soup from "./assets/soup.jpg";
-import img_panamacanal from "./assets/panamacanal.jpg";
-import img_roses from "./assets/roses.jpg";
-import img_quito from "./assets/quito.jpg";
-import img_machupicchu from "./assets/machupicchu.jpg";
-import img_mate from "./assets/mate.jpg";
-import img_messi from "./assets/messi.jpg";
-import img_pupusas from "./assets/pupusas.jpg";
-import img_havanacar from "./assets/havanacar.jpg";
-import img_alhambra from "./assets/alhambra.jpg";
-import img_tangoreal from "./assets/tangoreal.jpg";
-import img_andesmountains from "./assets/andesmountains.png";
-import img_llama from "./assets/llama.png";
-import img_taco from "./assets/taco.png";
-import img_paella from "./assets/paella.png";
-import img_spainofficialflag from "./assets/spainofficialflag.png";
-import img_uruguayteam from "./assets/uruguayteam.png";
-import img_moai from "./assets/moai.png";
-import img_chileempanada from "./assets/chileempanada.png";
-import img_colombiaemerald from "./assets/colombiaemerald.png";
+import img_gavi from "./assets/gavi.webp";
+import img_mariachi from "./assets/mariachi.webp";
+import img_ricebeans from "./assets/ricebeans.webp";
+import img_baseball from "./assets/baseball.webp";
+import img_beach from "./assets/beach.webp";
+import img_bukele from "./assets/bukele.webp";
+import img_volcano from "./assets/volcano.webp";
+import img_hangingbridge from "./assets/hangingbridge.webp";
+import img_soup from "./assets/soup.webp";
+import img_panamacanal from "./assets/panamacanal.webp";
+import img_roses from "./assets/roses.webp";
+import img_quito from "./assets/quito.webp";
+import img_machupicchu from "./assets/machupicchu.webp";
+import img_mate from "./assets/mate.webp";
+import img_messi from "./assets/messi.webp";
+import img_pupusas from "./assets/pupusas.webp";
+import img_havanacar from "./assets/havanacar.webp";
+import img_alhambra from "./assets/alhambra.webp";
+import img_tangoreal from "./assets/tangoreal.webp";
+import img_andesmountains from "./assets/andesmountains.webp";
+import img_llama from "./assets/llama.webp";
+import img_taco from "./assets/taco.webp";
+import img_paella from "./assets/paella.webp";
+import img_spainofficialflag from "./assets/spainofficialflag.webp";
+import img_uruguayteam from "./assets/uruguayteam.webp";
+import img_moai from "./assets/moai.webp";
+import img_chileempanada from "./assets/chileempanada.webp";
+import img_colombiaemerald from "./assets/colombiaemerald.webp";
 import img_peruofficialflag from "./assets/peruofficialflag.webp";
-import img_colombiacoffee from "./assets/colombiacoffee.png";
-import img_colombiaforest from "./assets/colombiaforest.png";
-import img_argentinasteak from "./assets/argentinasteak.png";
+import img_colombiacoffee from "./assets/colombiacoffee.webp";
+import img_colombiaforest from "./assets/colombiaforest.webp";
+import img_argentinasteak from "./assets/argentinasteak.webp";
 import img_costaricaofficialflag from "./assets/costaricaofficialflag.svg";
-import img_uruguaystadium from "./assets/uruguaystadium.png";
-import img_mangu from "./assets/mangu.png";
-import img_spainflamenco from "./assets/spainflamenco.png";
-import img_cubasalsa from "./assets/cubasalsa.png";
-import img_costaricasloth from "./assets/costaricasloth.png";
-import img_atacama from "./assets/atacama.png";
-import img_chichenitza from "./assets/chichenitza.jpg";
+import img_uruguaystadium from "./assets/uruguaystadium.webp";
+import img_mangu from "./assets/mangu.webp";
+import img_spainflamenco from "./assets/spainflamenco.webp";
+import img_cubasalsa from "./assets/cubasalsa.webp";
+import img_costaricasloth from "./assets/costaricasloth.webp";
+import img_atacama from "./assets/atacama.webp";
+import img_chichenitza from "./assets/chichenitza.webp";
 import img_mexicoofficialflag from "./assets/mexicoofficialflag.webp";
-import img_guatemalatikal from "./assets/guatemalatikal.png";
-import img_guatemalavolcano from "./assets/guatemalavolcano.png";
-import img_guatemalaatitlan from "./assets/guatemalaatitlan.png";
+import img_guatemalatikal from "./assets/guatemalatikal.webp";
+import img_guatemalavolcano from "./assets/guatemalavolcano.webp";
+import img_guatemalaatitlan from "./assets/guatemalaatitlan.webp";
 import img_guatemalaofficialflag from "./assets/guatemalaofficialflag.svg";
-import img_hondurasbaleadas from "./assets/hondurasbaleadas.png";
-import img_hondurascoral from "./assets/hondurascoral.png";
+import img_hondurasbaleadas from "./assets/hondurasbaleadas.webp";
+import img_hondurascoral from "./assets/hondurascoral.webp";
 import img_hondurasofficialflag from "./assets/hondurasofficialflag.svg";
-import img_nicaraguashark from "./assets/nicaraguashark.png";
-import img_nicaragualake from "./assets/nicaragualake.png";
-import img_nicaraguaofficialflag from "./assets/nicaraguaofficialflag.png";
-import img_puertoricobadbunny from "./assets/puertoricobadbunny.png";
-import img_puertoricobiobay from "./assets/puertoricobiobay.png";
+import img_nicaraguashark from "./assets/nicaraguashark.webp";
+import img_nicaragualake from "./assets/nicaragualake.webp";
+import img_nicaraguaofficialflag from "./assets/nicaraguaofficialflag.webp";
+import img_puertoricobadbunny from "./assets/puertoricobadbunny.webp";
+import img_puertoricobiobay from "./assets/puertoricobiobay.webp";
 import img_puertoricoofficialflag from "./assets/puertoricoofficialflag.svg";
-import img_venezuelaangel from "./assets/venezuelaangel.png";
-import img_venezuelamaduro from "./assets/venezuelamaduro.png";
-import img_venezuelaoil from "./assets/venezuelaoil.png";
+import img_venezuelaangel from "./assets/venezuelaangel.webp";
+import img_venezuelamaduro from "./assets/venezuelamaduro.webp";
+import img_venezuelaoil from "./assets/venezuelaoil.webp";
 import img_venezuelaofficialflag from "./assets/venezuelaofficialflag.webp";
 import img_boliviaofficialflag from "./assets/boliviaofficialflag.webp";
-import img_boliviauyuni from "./assets/boliviauyuni.png";
-import img_boliviaflamingo from "./assets/boliviaflamingo.png";
-import img_boliviavalle from "./assets/boliviavalle.png";
+import img_boliviauyuni from "./assets/boliviauyuni.webp";
+import img_boliviaflamingo from "./assets/boliviaflamingo.webp";
+import img_boliviavalle from "./assets/boliviavalle.webp";
 import img_paraguayofficialflag from "./assets/paraguayofficialflag.webp";
-import img_paraguaypalacio from "./assets/paraguaypalacio.png";
-import img_paraguayitaipu from "./assets/paraguayitaipu.png";
-import img_paraguayharp from "./assets/paraguayharp.png";
+import img_paraguaypalacio from "./assets/paraguaypalacio.webp";
+import img_paraguayitaipu from "./assets/paraguayitaipu.webp";
+import img_paraguayharp from "./assets/paraguayharp.webp";
 
 const IMAGES = {
   gavi: img_gavi,
@@ -137,6 +137,27 @@ const IMAGES = {
   paraguayharp: img_paraguayharp,
 };
 
+
+const preloadAllImages = () => {
+  const sources = Object.values(IMAGES);
+  let index = 0;
+
+  const loadBatch = () => {
+    const batchEnd = Math.min(index + 6, sources.length);
+    while (index < batchEnd) {
+      const image = new Image();
+      image.decoding = "async";
+      image.src = sources[index];
+      index += 1;
+    }
+
+    if (index < sources.length) {
+      window.setTimeout(loadBatch, 120);
+    }
+  };
+
+  window.setTimeout(loadBatch, 250);
+};
 
 /* ---------------- Flags ---------------- */
 function Star({ cx, cy, r = 1.6, fill = "#fff", points = 5 }) {
@@ -503,7 +524,7 @@ const PIN_LABELS = {
   argentina: { dx: 15, dy: 16, anchor: "start", size: 7.0 },
 };
 
-function Pin({ c, active, hovered, onEnter, onLeave, onClick }) {
+function Pin({ c, active, hovered, showLabel, onEnter, onLeave, onClick }) {
   const r = hovered ? 6.4 : active ? 5.6 : 4.4;
   const label = PIN_LABELS[c.key] || { dx: 9, dy: 3, anchor: "start", size: 7.5 };
   const labelX = c.x + label.dx;
@@ -514,6 +535,7 @@ function Pin({ c, active, hovered, onEnter, onLeave, onClick }) {
   const labelHeight = label.size + 7;
   const labelBoxX = label.anchor === "end" ? labelX - labelWidth - 4 : labelX - 4;
   const labelBoxY = labelY - labelHeight + 2;
+  const labelVisible = hovered || active || showLabel;
 
   const stopMapDrag = (event) => {
     event.stopPropagation();
@@ -535,7 +557,7 @@ function Pin({ c, active, hovered, onEnter, onLeave, onClick }) {
       className={`pin ${hovered ? "pin-hover" : ""} ${active ? "pin-active" : ""}`}
     >
       <title>{c.name}</title>
-      {showLeader && (
+      {labelVisible && showLeader && (
         <path
           d={`M${c.x} ${c.y} L${lineEndX} ${labelY - 2}`}
           className="pin-leader"
@@ -550,16 +572,18 @@ function Pin({ c, active, hovered, onEnter, onLeave, onClick }) {
         stroke="transparent"
         className="pin-hitbox"
       />
-      <rect
-        x={labelBoxX}
-        y={labelBoxY}
-        width={labelWidth}
-        height={labelHeight}
-        rx="4"
-        fill="transparent"
-        stroke="transparent"
-        className="pin-label-hitbox"
-      />
+      {labelVisible && (
+        <rect
+          x={labelBoxX}
+          y={labelBoxY}
+          width={labelWidth}
+          height={labelHeight}
+          rx="4"
+          fill="transparent"
+          stroke="transparent"
+          className="pin-label-hitbox"
+        />
+      )}
       <circle
         cx={c.x}
         cy={c.y}
@@ -570,21 +594,23 @@ function Pin({ c, active, hovered, onEnter, onLeave, onClick }) {
         className="pin-dot"
         pointerEvents="none"
       />
-      <text
-        x={labelX}
-        y={labelY}
-        textAnchor={label.anchor}
-        fontSize={label.size}
-        className="pin-name"
-        style={{
-          fontFamily: "Inter, Arial, Helvetica, sans-serif",
-          direction: "ltr",
-          unicodeBidi: "plaintext",
-          pointerEvents: "none",
-        }}
-      >
-        {c.name}
-      </text>
+      {labelVisible && (
+        <text
+          x={labelX}
+          y={labelY}
+          textAnchor={label.anchor}
+          fontSize={label.size}
+          className="pin-name"
+          style={{
+            fontFamily: "Inter, Arial, Helvetica, sans-serif",
+            direction: "ltr",
+            unicodeBidi: "plaintext",
+            pointerEvents: "none",
+          }}
+        >
+          {c.name}
+        </text>
+      )}
     </g>
   );
 }
@@ -668,6 +694,10 @@ function Panel({ country, onClose }) {
 
 /* ---------------- App ---------------- */
 export default function App() {
+  useEffect(() => {
+    preloadAllImages();
+  }, []);
+
   const [selected, setSelected] = useState(null);
   const [hovered, setHovered] = useState(null);
   const [mapView, setMapView] = useState(INITIAL_MAP_VIEW);
@@ -857,6 +887,7 @@ export default function App() {
                 c={{ ...c, name_en: NAME_EN[c.key] }}
                 active={selected === c.key}
                 hovered={hovered === c.key}
+                showLabel={zoomPercent >= 150}
                 onEnter={() => setHovered(c.key)}
                 onLeave={() => setHovered(null)}
                 onClick={() => setSelected(c.key)}
