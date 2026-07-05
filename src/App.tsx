@@ -67,6 +67,8 @@ import img_paraguayofficialflag from "./assets/paraguayofficialflag.webp";
 import img_paraguaypalacio from "./assets/paraguaypalacio.webp";
 import img_paraguayitaipu from "./assets/paraguayitaipu.webp";
 import img_paraguayharp from "./assets/paraguayharp.webp";
+import img_equatorialguineatraditional from "./assets/equatorialguineatraditional.webp";
+import img_equatorialguineaplantain from "./assets/equatorialguineaplantain.webp";
 
 const IMAGES = {
   gavi: img_gavi,
@@ -135,6 +137,8 @@ const IMAGES = {
   paraguaypalacio: img_paraguaypalacio,
   paraguayitaipu: img_paraguayitaipu,
   paraguayharp: img_paraguayharp,
+  equatorialguineatraditional: img_equatorialguineatraditional,
+  equatorialguineaplantain: img_equatorialguineaplantain,
 };
 
 
@@ -199,6 +203,23 @@ function Flag({ k, size = 1 }) {
   switch (k) {
     case "spain":
       return <img src={IMAGES.spainofficialflag} alt="Bandera de España" style={s} />;
+    case "equatorialguinea":
+      return (
+        <svg viewBox="0 0 30 20" style={s}>
+          <rect width="30" height="6.67" fill="#3E9A57" />
+          <rect y="6.67" width="30" height="6.66" fill="#FFFFFF" />
+          <rect y="13.33" width="30" height="6.67" fill="#E3212F" />
+          <polygon points="0,0 9.2,10 0,20" fill="#4C8BC9" />
+          <g transform="translate(18 10)">
+            <path d="M-2.2 -2.1 H2.2 V2.2 Q0 3.3 -2.2 2.2 Z" fill="#F5F5F5" stroke="#777" strokeWidth="0.22" />
+            <path d="M0 -1.5 V1.25" stroke="#7A4B22" strokeWidth="0.38" strokeLinecap="round" />
+            <circle cx="0" cy="-1.45" r="1.15" fill="#3E9A57" />
+            {[-2.3,-1.4,-0.5,0.5,1.4,2.3].map((sx) => (
+              <circle key={sx} cx={sx} cy="-3.15" r="0.28" fill="#F2C94C" />
+            ))}
+          </g>
+        </svg>
+      );
     case "mexico":
       return <img src={IMAGES.mexicoofficialflag} alt="Bandera de México" style={s} />;
     case "cuba":
@@ -328,6 +349,12 @@ const COUNTRIES = [
     food: { title: "الباييلا", caption: "طبق الأرز الإسباني الأشهر، أصله من مدينة فالنسيا", img: IMAGES.paella },
     landmark: { title: "قصر الحمراء", caption: "قصر إسلامي تاريخي مطلّ على مدينة غرناطة", img: IMAGES.alhambra },
     fact: "إسبانيا هي أكبر منتج لزيت الزيتون في العالم.",
+  },
+  {
+    key: "equatorialguinea", name: "Equatorial Guinea", code: "GQ", flag: "equatorialguinea", x: 529.1, y: 252.4,
+    person: { title: "الزي التقليدي", caption: "أزياء إفريقية ملونة مزينة بنقوش زاهية، وتُرتدى في المناسبات والاحتفالات الشعبية", img: IMAGES.equatorialguineatraditional },
+    food: { title: "الموز المطبوخ (Plantain)", caption: "أكلة يومية أساسية في غينيا الاستوائية", img: IMAGES.equatorialguineaplantain },
+    fact: "غينيا الاستوائية هي الدولة الوحيدة في أفريقيا التي تُعد الإسبانية لغةً رسمية.",
   },
   {
     key: "mexico", name: "México", code: "MX", flag: "mexico", x: 232.6, y: 205.4,
@@ -503,6 +530,7 @@ const WORLD_BORDERS = ["M312.9 302.6L313.4 303.7L314.0 304.8L314.4 306.0L315.0 3
 
 const PIN_LABELS = {
   spain: { dx: 13, dy: -10, anchor: "start", size: 8.0 },
+  equatorialguinea: { dx: -10, dy: -9, anchor: "end", size: 5.4 },
   mexico: { dx: -13, dy: -13, anchor: "end", size: 8.0 },
   cuba: { dx: 11, dy: -13, anchor: "start", size: 7.2 },
   dominicanrepublic: { dx: 19, dy: -1, anchor: "start", size: 5.7 },
@@ -616,7 +644,7 @@ function Pin({ c, active, hovered, showLabel, onEnter, onLeave, onClick }) {
 }
 
 const NAME_EN = {
-  spain: "España", mexico: "México", guatemala: "Guatemala", honduras: "Honduras", nicaragua: "Nicaragua", cuba: "Cuba", dominicanrepublic: "República Dominicana", puertorico: "Puerto Rico",
+  spain: "España", equatorialguinea: "Equatorial Guinea", mexico: "México", guatemala: "Guatemala", honduras: "Honduras", nicaragua: "Nicaragua", cuba: "Cuba", dominicanrepublic: "República Dominicana", puertorico: "Puerto Rico",
   elsalvador: "El Salvador", costarica: "Costa Rica", panama: "Panamá", colombia: "Colombia", venezuela: "Venezuela",
   ecuador: "Ecuador", peru: "Perú", bolivia: "Bolivia", paraguay: "Paraguay", uruguay: "Uruguay", chile: "Chile", argentina: "Argentina",
 };
@@ -659,7 +687,9 @@ function Panel({ country, onClose }) {
       <div className="cards-row">
         {country.key === "andes" ? (
           <>
-            <PhotoCard title={country.landmark.title} caption={country.landmark.caption} img={country.landmark.img} />
+            {country.landmark && (
+              <PhotoCard title={country.landmark.title} caption={country.landmark.caption} img={country.landmark.img} />
+            )}
             {country.person && (
               <PhotoCard title={country.person.title} caption={country.person.caption} img={country.person.img} />
             )}
