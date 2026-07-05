@@ -69,7 +69,6 @@ import img_paraguayitaipu from "./assets/paraguayitaipu.webp";
 import img_paraguayharp from "./assets/paraguayharp.webp";
 import img_equatorialguineatraditional from "./assets/equatorialguineatraditional.webp";
 import img_equatorialguineaplantain from "./assets/equatorialguineaplantain.webp";
-import img_equatorialguineaofficialflag from "./assets/equatorialguineaofficialflag.svg";
 
 const IMAGES = {
   gavi: img_gavi,
@@ -140,7 +139,6 @@ const IMAGES = {
   paraguayharp: img_paraguayharp,
   equatorialguineatraditional: img_equatorialguineatraditional,
   equatorialguineaplantain: img_equatorialguineaplantain,
-  equatorialguineaofficialflag: img_equatorialguineaofficialflag,
 };
 
 
@@ -206,7 +204,22 @@ function Flag({ k, size = 1 }) {
     case "spain":
       return <img src={IMAGES.spainofficialflag} alt="Bandera de España" style={s} />;
     case "equatorialguinea":
-      return <img src={IMAGES.equatorialguineaofficialflag} alt="Bandera de Guinea Ecuatorial" style={s} />;
+      return (
+        <svg viewBox="0 0 30 20" style={s}>
+          <rect width="30" height="6.67" fill="#3E9A57" />
+          <rect y="6.67" width="30" height="6.66" fill="#FFFFFF" />
+          <rect y="13.33" width="30" height="6.67" fill="#E3212F" />
+          <polygon points="0,0 9.2,10 0,20" fill="#4C8BC9" />
+          <g transform="translate(18 10)">
+            <path d="M-2.2 -2.1 H2.2 V2.2 Q0 3.3 -2.2 2.2 Z" fill="#F5F5F5" stroke="#777" strokeWidth="0.22" />
+            <path d="M0 -1.5 V1.25" stroke="#7A4B22" strokeWidth="0.38" strokeLinecap="round" />
+            <circle cx="0" cy="-1.45" r="1.15" fill="#3E9A57" />
+            {[-2.3,-1.4,-0.5,0.5,1.4,2.3].map((sx) => (
+              <circle key={sx} cx={sx} cy="-3.15" r="0.28" fill="#F2C94C" />
+            ))}
+          </g>
+        </svg>
+      );
     case "mexico":
       return <img src={IMAGES.mexicoofficialflag} alt="Bandera de México" style={s} />;
     case "cuba":
